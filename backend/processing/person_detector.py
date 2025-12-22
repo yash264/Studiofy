@@ -2,9 +2,9 @@ import cv2
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-WEIGHTS = os.path.join(BASE_DIR, "../models/yolov4-tiny.weights")
-CFG = os.path.join(BASE_DIR, "../models/yolov4-tiny.cfg")
-NAMES = os.path.join(BASE_DIR, "../models/coco.names")
+WEIGHTS = os.path.join(BASE_DIR, "models/yolov4-tiny.weights")
+CFG = os.path.join(BASE_DIR, "models/yolov4-tiny.cfg")
+NAMES = os.path.join(BASE_DIR, "models/coco.names")
 
 net = cv2.dnn.readNetFromDarknet(CFG, WEIGHTS)
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)

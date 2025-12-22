@@ -4,7 +4,7 @@ from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
 
-MODEL_PATH = "../models/blaze_face_short_range.tflite"
+MODEL_PATH = "models/blaze_face_short_range.tflite"
 base_options = python.BaseOptions(model_asset_path=MODEL_PATH)
 
 
