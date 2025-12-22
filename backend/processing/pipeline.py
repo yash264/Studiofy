@@ -1,28 +1,32 @@
 import cv2
-
-from models.face_detector import detect_face
-from models.deblur import denoise_image
-from models.face_enhancer import enhance_face
-from processing.background_blur import apply_background_blur
+from processing.face_detector import detect_face
+from processing.person_detector import detect_person
+from processing.deblur import denoise_image
+from processing.face_enhancer import enhance_face
+from processing.background_blur import apply_realistic_body_blur
 from processing.color_enhance import studio_color_enhance
 
 def run_pipeline(input_path, output_path):
     image = cv2.imread(input_path)
 
-    # 1. Face detection
-    face_bbox = detect_face(image)
-
-    # 2. Denoise / deblur
     image = denoise_image(image)
 
-    # 3. Face enhancement
-    image = enhance_face(image, face_bbox)
+    face_bboxes = detect_face(image)
+    if face_bboxes is None:
+        face_bboxes = []
 
-    # 4. Background blur
-    image = apply_background_blur(image, face_bbox)
+    if isinstance(face_bboxes, tuple):
+        face_bboxes = [face_bboxes]
 
-    # 5. Studio color & lighting
+    for bbox in face_bboxes:
+        image = enhance_face(image, bbox)
+
+    body_bbox = detect_person(image)
+
+    image = apply_realistic_body_blur(image, body_bbox)
+
     image = studio_color_enhance(image)
 
     cv2.imwrite(output_path, image)
+
 

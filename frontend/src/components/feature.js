@@ -43,12 +43,12 @@ function Section() {
             const blob = await response.blob();
             const imageURL = URL.createObjectURL(blob);
             setResultImage(imageURL);
-        } 
-        catch(err){
+        }
+        catch (err) {
             console.error(err);
             setError("Server not reachable");
-        } 
-        finally{
+        }
+        finally {
             setLoading(false);
         }
     };
@@ -56,11 +56,18 @@ function Section() {
     return (
         <>
             <div className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+
+                <h1 className="text-4xl pt-12 text-center font-bold text-gray-900 sm:text-5xl">
+                    Studio
+                    <strong className="text-indigo-600"> Portrait </strong>
+                    Enhancer
+                </h1>
+
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:items-center">
 
                     {/* LEFT SIDE */}
                     <div className="p-4">
-                        <label className="inline-block cursor-pointer rounded bg-rose-500 px-4 py-2 text-white font-bold hover:bg-rose-600">
+                        <label className="inline-block align-center cursor-pointer rounded bg-rose-500 px-4 py-2 text-white font-bold hover:bg-rose-600">
                             Select Image
                             <input
                                 type="file"
@@ -71,40 +78,53 @@ function Section() {
                         </label>
 
                         {preview && (
-                            <div className="mt-6 space-y-4">
-                                <img
-                                    src={preview}
-                                    alt="Original Preview"
-                                    className="max-w-full rounded-lg shadow-lg"
-                                />
+                            <div className="mt-6 space-y-4 flex flex-col items-center">
 
+                                {/* Image Container */}
+                                <div className="w-full text-center max-w-md">
+                                    <h2 className="mb-2 text-xl font-bold text-gray-800">
+                                        Original Image
+                                    </h2>
+                                    <img
+                                        src={preview}
+                                        alt="Original Preview"
+                                        className="w-full h-auto rounded-lg shadow-lg object-contain"
+                                    />
+                                </div>
+
+                                {/* Button */}
                                 <button
                                     onClick={handleEnhance}
                                     disabled={loading}
-                                    className={`rounded px-4 py-2 text-white font-bold ${loading
-                                        ? "bg-gray-400"
-                                        : "bg-green-500 hover:bg-green-600"
-                                        }`}
+                                    className={`flex items-center justify-center gap-2 rounded px-6 py-2 text-white font-bold transition
+                                    ${loading ? "bg-gray-400 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"}
+                                    `}
                                 >
+                                    {loading && (
+                                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+                                    )}
                                     {loading ? "Processing..." : "Enhance Portrait"}
                                 </button>
 
-                                {error && <p className="text-red-500">{error}</p>}
+                                {/* Error */}
+                                {error && <p className="text-red-500 text-sm">{error}</p>}
                             </div>
                         )}
+
+
                     </div>
 
                     {/* RIGHT SIDE */}
                     <div className="space-y-6">
                         {resultImage ? (
-                            <div>
+                            <div className="w-full text-center max-w-md">
                                 <h2 className="mb-2 text-xl font-bold text-gray-800">
-                                    Enhanced Result
+                                    Enhanced Portrait
                                 </h2>
                                 <img
                                     src={resultImage}
                                     alt="Enhanced Output"
-                                    className="w-full rounded-lg shadow-lg border border-gray-200"
+                                    className="w-full h-auto rounded-lg shadow-lg object-contain"
                                 />
                             </div>
                         ) : (

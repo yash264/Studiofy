@@ -37,19 +37,19 @@ function Navbar() {
 
                 {/* Desktop Menu */}
                 <nav className="hidden md:flex ml-auto">
-                    <ul className="flex gap-6 text-sm text-white">
+                    <ul className="flex gap-6 text-base text-yellow-400">
                         <li>
-                            <button onClick={() => handleNavClick("#header")} className="hover:text-white/75">
+                            <button onClick={() => handleNavClick("#header")} className="hover:text-rose-400">
                                 Home
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => handleNavClick("#feature")} className="hover:text-white/75">
+                            <button onClick={() => handleNavClick("#feature")} className="hover:text-rose-400">
                                 Feature
                             </button>
                         </li>
                         <li>
-                            <button onClick={() => handleNavClick("#footer")} className="hover:text-white/75">
+                            <button onClick={() => handleNavClick("#footer")} className="hover:text-rose-400">
                                 About
                             </button>
                         </li>
