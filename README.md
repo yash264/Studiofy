@@ -44,16 +44,7 @@ It focuses on realism, speed, and identity preservation while avoiding heavy gen
 
 ---
 
-### 5. Noise Reduction & Image Cleanup
-- Reduces:
-  - Sensor noise
-  - Compression artifacts
-- Designed for mobile-camera and low-light images
-- Preserves important edges and textures
-
----
-
-### 6. Face-Focused Enhancement
+### 5. Face-Focused Enhancement
 - Enhances facial clarity using:
   - Bilateral filtering
   - Edge-aware sharpening
@@ -65,7 +56,7 @@ It focuses on realism, speed, and identity preservation while avoiding heavy gen
 
 ---
 
-### 7. Studio-Grade Color & Contrast Enhancement
+### 6. Studio-Grade Color & Contrast Enhancement
 Uses professional photography techniques:
 - LAB-based automatic white balance
 - Soft contrast enhancement (CLAHE on luminance channel)
@@ -76,7 +67,12 @@ Result:
 - Natural skin tones
 - Balanced highlights and shadows
 - Clean studio-style appearance
+---
 
+## Demo Video & Live Hosting
+
+- **🎥 Video Demo:** https://drive.google.com/file/d/1V9cn4c_c5DAYs-nC4Sdg8I1i19pV8NFu/view?usp=sharing
+  
 ---
 
 ## 📂 Processing Pipeline
